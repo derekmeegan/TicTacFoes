@@ -112,7 +112,7 @@ const GameScreen = props => {
 
     const addWin = (players, num) => {
       let winner = players[num];
-      winner['wins'] += 9;
+      winner['wins'] += 1;
       let update = num === 0 ? {player1: winner} : {player2: winner};
       return firestore()
         .collection('tic-games')
