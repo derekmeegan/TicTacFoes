@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
   StatusBar,
-  StyleSheet,
   Text,
   Image,
   ImageBackground,
@@ -13,9 +11,6 @@ import {
   Picker,
 } from 'react-native';
 
-import DropDownPicker from 'react-native-dropdown-picker';
-import firebase from '@react-native-firebase/app';
-import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 const CreateGame = props => {
@@ -24,6 +19,11 @@ const CreateGame = props => {
   const [pickerVal, setPickerVal] = useState('Random');
   const [selectedValue, setSelectedValue] = useState('Random');
   const [step, setStep] = useState('create');
+  const options = [
+    {label: 'Random', value: 'Random'},
+    {label: 'I Play as X', value: 'X'},
+    {label: 'I Play as O', value: 'O'},
+  ];
 
   const createGameCode = (name, u_side) => {
     let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -33,48 +33,9 @@ const CreateGame = props => {
       answer += letters[random];
     }
     setGameCode(answer);
-    if (checkGameCode(answer, name, u_side)) return answer;
-  };
-  const styles = StyleSheet.create({
-    defaultPicker: {
-      width: '70%',
-      height: 20,
-      borderWidth: 1,
-      borderRadius: 5,
-      backgroundColor: 'white',
-      borderColor: '#000000',
-    },
-  });
-
-  const options = [
-    {label: 'Random', value: 'Random'},
-    {label: 'I Play as X', value: 'X'},
-    {label: 'I Play as O', value: 'O'},
-  ];
-
-  const createGame = async (name, u_side) => {
-    let gcode = createGameCode(name, u_side);
-    let id = await get_id(gcode);
-    props.setGameId(id);
-    //let side = selectedValue;
-    //let u_name = name;
-    props.setSide('player1');
-    setStep('waiting');
-    //console.log(gcode, side, u_name);
-    //auth().currentUser.uid
-  };
-
-  const get_id = code => {
-    return firestore()
-      .collection('tic-games')
-      .where('gameCode', '==', code.toUpperCase())
-      .get()
-      .then(doc => {
-        return doc.docs[0].id;
-      })
-      .catch(err => {
-        console.log({hasError: true, value: 'id-not-found'});
-      });
+    return checkGameCode(answer, name, u_side)
+      ? answer
+      : createGameCode(name, u_side);
   };
 
   const checkGameCode = (newGameCode, name, u_side) => {
@@ -83,11 +44,9 @@ const CreateGame = props => {
       .where('gameCode', '==', newGameCode)
       .get()
       .then(results => {
-        if (results.size > 0) {
-          return createGameCode();
-        } else {
-          return saveGame(newGameCode, name, u_side);
-        }
+        return results.size > 0
+          ? createGameCode()
+          : saveGame(newGameCode, name, u_side);
       })
       .catch(err => {
         return {hasError: true, value: err};
@@ -120,6 +79,21 @@ const CreateGame = props => {
       });
   };
 
+  const createGame = async (name, u_side) => {
+    return firestore()
+      .collection('tic-games')
+      .where('gameCode', '==', createGameCode(name, u_side))
+      .get()
+      .then(doc => {
+        props.setGameId(doc.docs[0].id);
+        props.setSide('player1');
+        setStep('waiting');
+      })
+      .catch(err => {
+        console.log({hasError: true, value: 'id-not-found'});
+      });
+  };
+
   return (
     <>
       <SafeAreaView style={props.styles.container}>
@@ -140,7 +114,7 @@ const CreateGame = props => {
               />
               <View style={{...props.styles.dropdown, paddingLeft: 10}}>
                 <Picker
-                  style={styles.defaultPicker}
+                  style={props.styles.defaultPicker}
                   selectedValue={selectedValue}
                   onValueChange={(itemValue, itemIndex) =>
                     setSelectedValue(itemValue)
@@ -195,34 +169,3 @@ const CreateGame = props => {
 };
 
 export default CreateGame;
-
-/*
-
-containerStyle={{
-              height: 60,
-              width: 275,
-              borderColor: '#000000',
-              borderStyle: 'solid',
-              borderWidth: 1,
-              borderRadius: 15,
-              shadowColor: 'rgba(0,0,0,0.25)',
-            }}
-
-
-            <DropDownPicker
-            items={options}
-            defaultValue={pickerVal}
-            containerStyle={{
-              height: 60,
-              width: 275,
-              borderColor: '#000000',
-              borderStyle: 'solid',
-              borderWidth: 1,
-              borderRadius: 15,
-              shadowColor: 'rgba(0,0,0,0.25)',
-            }}
-            itemStyle={{justifyContent: 'flex-start'}}
-            onPress={item => setPickerVal(item.value)}
-          />
-
-          */

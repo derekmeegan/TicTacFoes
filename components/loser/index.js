@@ -1,19 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
   Text,
   Image,
   ImageBackground,
   TouchableOpacity,
   View,
 } from 'react-native';
-import BoardGroup from '../boardGroup/index.js';
-import firebase from '@react-native-firebase/app';
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
 
 const Loser = props => {
   return (
@@ -23,10 +16,23 @@ const Loser = props => {
           source={require('../../images/test.png')}
           style={props.styles.backgrounImg}>
           <Image
-            source={require('../../images/solving-rafiki.png')}
-            style={props.styles.waitingImg}
+            source={require('../../images/Lost-bro.png')}
+            style={{...props.styles.waitingImg, marginTop: 70}}
           />
-          <Text style={props.styles.waitingText}>{'You lost'}</Text>
+          <Text style={props.styles.winningText}>{'You lost :('}</Text>
+
+          <View style={props.styles.gameButtonRow}>
+            <TouchableOpacity
+              onPress={() => props.setScreen('home')}
+              style={props.styles.startButton}>
+              <Text style={props.styles.startText}>{'Exit'}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => props.setScreen('create-game')}
+              style={props.styles.startButton}>
+              <Text style={props.styles.startText}>{'Play Again'}</Text>
+            </TouchableOpacity>
+          </View>
         </ImageBackground>
       </SafeAreaView>
     </>

@@ -20,14 +20,15 @@ import {
   View,
 } from 'react-native';
 
+import firebase from '@react-native-firebase/app';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+
 import styles from './components/stylesheet/index.js';
 import Home from './components/home/index.js';
 import CreateGame from './components/create-game/index.js';
 import JoinGame from './components/join-game/index.js';
 import GameScreen from './components/game/index.js';
-import firebase from '@react-native-firebase/app';
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
 import Loser from './components/loser/index.js';
 import Winner from './components/winner/index.js';
 
@@ -51,7 +52,7 @@ const App: () => Node = () => {
   useEffect(() => {
     let unsubscribe;
     if (gameId) {
-      subscriber = firestore()
+      let sub = firestore()
         .collection('tic-games')
         .doc(gameId)
         .onSnapshot(doc => {
@@ -60,7 +61,7 @@ const App: () => Node = () => {
           }
         });
       if (screen === 'game') {
-        subscriber();
+        sub();
       }
     } else {
       const authSubscriber = auth().onAuthStateChanged(onAuthStateChanged);

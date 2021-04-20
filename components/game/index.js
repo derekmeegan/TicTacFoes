@@ -1,9 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
   Text,
   Image,
   ImageBackground,
@@ -11,8 +8,6 @@ import {
   View,
 } from 'react-native';
 import BoardGroup from '../boardGroup/index.js';
-import firebase from '@react-native-firebase/app';
-import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 const GameScreen = props => {
@@ -118,10 +113,7 @@ const GameScreen = props => {
     const addWin = (players, num) => {
       let winner = players[num];
       winner['wins'] += 1;
-      let update =
-        num === 0
-          ? {player1: winner, roundNumber: round + 1}
-          : {player2: winner, roundNumber: round + 1};
+      let update = num === 0 ? {player1: winner} : {player2: winner};
       return firestore()
         .collection('tic-games')
         .doc(props.gameId)
@@ -163,15 +155,15 @@ const GameScreen = props => {
               ? `${opponentData['name']}(${opponentData['side']}) v. ${playerData['name']}(${playerData['side']})`
               : null}
           </Text>
-          <Text style={props.styles.gameTitle}>
+          <Text style={props.styles.roundText}>
             {`Round ${round}: ` + resultText}
           </Text>
-          <Text>
-            {opponentData
-              ? `${opponentData['name']} : ${opponentData['wins']}`
-              : null}
-          </Text>
           <View style={{marginTop: 20}}>
+            <Text style={props.styles.leftText}>
+              {opponentData
+                ? `${opponentData['name']} : ${opponentData['wins']}`
+                : null}
+            </Text>
             <BoardGroup
               group={gameBoard.slice(0, 3)}
               styles={props.styles}
@@ -196,7 +188,7 @@ const GameScreen = props => {
               turn={turn}
               gameBoard={gameBoard}
             />
-            <Text>
+            <Text style={props.styles.bottomLeft}>
               {playerData
                 ? `${playerData['name']} : ${playerData['wins']}`
                 : null}
@@ -205,7 +197,7 @@ const GameScreen = props => {
               <TouchableOpacity
                 onPress={() => props.setScreen('home')}
                 style={props.styles.startButton}>
-                <Text style={props.styles.startText}>{'Go Back'}</Text>
+                <Text style={props.styles.startText}>{'Exit'}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => resetGame()}
@@ -213,7 +205,12 @@ const GameScreen = props => {
                 <Text style={props.styles.startText}>{'Reset'}</Text>
               </TouchableOpacity>
             </View>
-            <Text>{`Game Code: ${props.globalGameCode}`}</Text>
+            <Text
+              style={{
+                ...props.styles.bottomLeft,
+                fontSize: 18,
+                alignSelf: 'center',
+              }}>{`Game Code: ${props.globalGameCode}`}</Text>
           </View>
         </ImageBackground>
       </SafeAreaView>

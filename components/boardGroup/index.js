@@ -1,15 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  Image,
-  ImageBackground,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React from 'react';
+import {TouchableOpacity, View} from 'react-native';
 
 const BoardGroup = props => {
   var indexAdd = 0;

@@ -1,10 +1,6 @@
-import {FirebaseFirestoreTypes} from '@react-native-firebase/firestore';
 import React, {useState} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
   Text,
   Image,
   ImageBackground,
@@ -12,17 +8,11 @@ import {
   View,
   TextInput,
 } from 'react-native';
-import firebase from '@react-native-firebase/app';
-import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 const JoinGame = props => {
   const [name, setName] = useState('');
   const [gameCode, setGameCode] = useState('');
-
-  const jointheGame = (code, u_name) => {
-    console.log(`${u_name} tried to join this game: ${code}`);
-  };
 
   const checkGameCode = code => {
     return firestore()
@@ -44,10 +34,8 @@ const JoinGame = props => {
   };
 
   const startGame = (code, u_name) => {
-    //let player2Data = get_p_data(2)
     checkGameCode(code)
       .then(items => {
-        console.log(items);
         let newP2 = items[1];
         newP2['name'] = u_name;
         return firestore()
@@ -60,7 +48,6 @@ const JoinGame = props => {
           .then(() => props.setScreen('game'));
       })
       .catch(err => {
-        //console.log(docId, p_2);
         console.log('game code does not exist');
       });
   };
@@ -94,11 +81,8 @@ const JoinGame = props => {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => startGame(gameCode, name)}
-              //onPress={() => test()}
               style={{
                 ...props.styles.startButton,
-                // marginLeft: 160,
-                // marginTop: 30,
               }}>
               <Text style={props.styles.startText}>{'Join'}</Text>
             </TouchableOpacity>

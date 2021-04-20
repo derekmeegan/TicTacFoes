@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   gameTitle: {
     color: '#FFFFFF',
     fontFamily: 'monospace',
-    fontSize: 24,
+    fontSize: 28,
     alignSelf: 'center',
     marginLeft: 20,
     marginBottom: 15,
@@ -151,6 +151,38 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 4},
     shadowRadius: 4,
     justifyContent: 'center',
+  },
+  roundText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    fontFamily: 'monospace',
+    alignSelf: 'center',
+    color: '#FFFFFF',
+  },
+  leftText: {
+    fontFamily: 'monospace',
+    color: '#FFFFFF',
+    fontSize: 12,
+    marginTop: 20,
+    marginBottom: 20,
+    fontWeight: 'bold',
+  },
+  bottomLeft: {
+    fontFamily: 'monospace',
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontWeight: 'bold',
+    marginTop: 15,
+    marginBottom: 25,
+  },
+  winningText: {
+    fontFamily: 'monospace',
+    color: '#FFFFFF',
+    fontSize: 40,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    marginTop: 70,
+    marginBottom: 70,
   },
 });
 

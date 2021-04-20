@@ -1,9 +1,6 @@
 import React from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
   Text,
   Image,
   ImageBackground,
@@ -34,8 +31,7 @@ const Home = props => {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                props.setScreen('join-game');
-                console.log('run');
+                props.setScreen('loser');
               }}
               style={props.styles.homeButton}>
               <Text style={props.styles.homtButtonText}>{'Join a Game'}</Text>
