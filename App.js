@@ -44,25 +44,18 @@ const App: () => Node = () => {
 
   const onAuthStateChanged = user => {
     setUserAuth(user);
-    if (initializing) {
-      setInitializing(false);
-    }
+    if (initializing) setInitializing(false);
   };
 
   useEffect(() => {
-    let unsubscribe;
     if (gameId) {
       let sub = firestore()
         .collection('tic-games')
         .doc(gameId)
         .onSnapshot(doc => {
-          if (doc.data().isPlaying) {
-            setScreen('game');
-          }
+          if (doc.data().isPlaying) setScreen('game');
         });
-      if (screen === 'game') {
-        sub();
-      }
+      if (screen === 'game') sub();
     } else {
       const authSubscriber = auth().onAuthStateChanged(onAuthStateChanged);
 
@@ -89,16 +82,8 @@ const App: () => Node = () => {
       };
     }
   }, [gameId]);
-  //while we wait for the authentication process to complete, show a blank screen
-  if (initializing) {
-    return null;
-  }
 
-  // useEffect(() => {
-  //   if (screen === 'create-game' && gameData.isPlaying) {
-  //     changeScreen('game');
-  //   }
-  // }, [gameData]);
+  if (initializing) return null;
 
   return (
     <>
