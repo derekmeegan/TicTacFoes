@@ -31,7 +31,7 @@ const Home = props => {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                props.setScreen('loser');
+                props.setScreen('join-game');
               }}
               style={props.styles.homeButton}>
               <Text style={props.styles.homtButtonText}>{'Join a Game'}</Text>

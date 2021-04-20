@@ -112,7 +112,7 @@ const GameScreen = props => {
 
     const addWin = (players, num) => {
       let winner = players[num];
-      winner['wins'] += 1;
+      winner['wins'] += 9;
       let update = num === 0 ? {player1: winner} : {player2: winner};
       return firestore()
         .collection('tic-games')
@@ -133,7 +133,6 @@ const GameScreen = props => {
       let [player1, player2] = players;
       let check = await getGameBoard();
       check = checkWinner(check);
-      console.log(check);
       if (check === 'Draw') {
         setResultText(`Game is Drawn`);
       } else if (check === 'X' || check === 'O') {
