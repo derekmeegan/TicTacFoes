@@ -1,0 +1,154 @@
+{
+  "project_info": {
+    "project_number": "157846001752",
+    "project_id": "easytodos-ae51a",
+    "storage_bucket": "easytodos-ae51a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157846001752:android:7fe0f715430f3ab3f9922d",
+        "android_client_info": {
+          "package_name": "com.askouija"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157846001752-d5vpripsvu97kb7rq6l6ebpigni14dt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTd8bDnlatQN_WWTRWMQlO8L-JBVm7Gjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157846001752-d5vpripsvu97kb7rq6l6ebpigni14dt3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "157846001752-pvpt11ogif6fhg8bhgkfktkpptd160i4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.easyToDo"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157846001752:android:25ccfc734b88122ff9922d",
+        "android_client_info": {
+          "package_name": "com.easytodos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157846001752-d5vpripsvu97kb7rq6l6ebpigni14dt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTd8bDnlatQN_WWTRWMQlO8L-JBVm7Gjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157846001752-d5vpripsvu97kb7rq6l6ebpigni14dt3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "157846001752-pvpt11ogif6fhg8bhgkfktkpptd160i4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.easyToDo"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157846001752:android:e7cf8a189e5b8277f9922d",
+        "android_client_info": {
+          "package_name": "com.tictac2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157846001752-d5vpripsvu97kb7rq6l6ebpigni14dt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTd8bDnlatQN_WWTRWMQlO8L-JBVm7Gjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157846001752-d5vpripsvu97kb7rq6l6ebpigni14dt3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "157846001752-pvpt11ogif6fhg8bhgkfktkpptd160i4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.easyToDo"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157846001752:android:25d2a8e77839247df9922d",
+        "android_client_info": {
+          "package_name": "com.trashtalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157846001752-d5vpripsvu97kb7rq6l6ebpigni14dt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTd8bDnlatQN_WWTRWMQlO8L-JBVm7Gjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157846001752-d5vpripsvu97kb7rq6l6ebpigni14dt3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "157846001752-pvpt11ogif6fhg8bhgkfktkpptd160i4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.easyToDo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
